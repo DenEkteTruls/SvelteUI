@@ -7,8 +7,8 @@
 
     function clicked(event)
     {
-        dispatch('clicked');
-    }   
+        dispatch('newGroup');
+    }
 
 </script>
 
@@ -39,4 +39,5 @@
     button:hover {
         transform: scale(1.01);
     }
+
 </style>

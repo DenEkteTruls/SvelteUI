@@ -6,7 +6,7 @@
 
 
 {#each groups as group}
-    <div><Tab on:nameChanged {group}/></div>
+    <div><Tab on:nameChanged on:colorChanged on:removeGroup {group}/></div>
 {/each}
 
 

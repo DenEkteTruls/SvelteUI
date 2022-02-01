@@ -32,6 +32,10 @@
     function focus(element) {
         element.focus();
     }
+
+    if(value == undefined) {
+        editing = true;
+    }
 </script>
 
 {#if editing}

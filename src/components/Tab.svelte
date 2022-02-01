@@ -14,17 +14,36 @@
             });
         }
     }
+
+    function color_click(event) {
+        dispatch('colorChanged', {
+            id: group.id,
+            new_color: "#fff"
+        });
+    }
+
+    function removeGroup() {
+        dispatch('removeGroup', {
+            id: group.id
+        });
+    }
+
 </script>
+
+
 
 <div class="container">
     <div class="left">
-        <div id="color" style="background-color: {group.color};"></div>
+        <div id="color" style="background-color: {group.color};" on:click={color_click}></div>
     </div>
     <div class="right">
         <h1 id="title"><EditableEntry bind:value={group.title} on:submit={submit('title')}/></h1>
-        <p id="tasks">{group.tasks} tasks</p>
+        <p id="tasks">{group.tasks}/{group.done} tasks</p>
+        <img src="cross.png" id="cross" alt="" on:click={removeGroup}/>
     </div>
 </div>
+
+
 
 <style>
     .container {
@@ -67,5 +86,17 @@
         font-size: 22px;
         color: #717278;
         margin-top: 40px;
+    }
+
+    .right > #cross {
+        top: 10px;
+        right: -238px;
+        position: relative;
+        width: 15px;
+        user-select: none;
+    }
+
+    .left > #color {
+        user-select: none;
     }
 </style>
