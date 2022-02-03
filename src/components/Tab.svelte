@@ -28,17 +28,25 @@
         });
     }
 
+    function tabClick(event) {
+        if(!["title_", "tasks", "color", "cross"].includes(event.target.id)) {
+            dispatch("selectedGroup", {
+                id: group.id
+            });
+        }
+    }
+
 </script>
 
 
 
-<div class="container">
+<div class="container" on:click={tabClick}>
     <div class="left">
         <div id="color" style="background-color: {group.color};" on:click={color_click}></div>
     </div>
     <div class="right">
-        <h1 id="title"><EditableEntry bind:value={group.title} on:submit={submit('title')}/></h1>
-        <p id="tasks">{group.tasks}/{group.done} tasks</p>
+        <h1 id="title"><EditableEntry id="title_" bind:value={group.title} on:submit={submit('title')}/></h1>
+        <p id="tasks">{group.todos.length}/{group.done} tasks</p>
         <img src="cross.png" id="cross" alt="" on:click={removeGroup}/>
     </div>
 </div>
@@ -71,7 +79,6 @@
     }
 
     .right {
-        max-width: calc(100% - 35px);
         height: 80px;
     }
 

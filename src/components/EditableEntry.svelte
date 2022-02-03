@@ -3,6 +3,7 @@
 
     export let value, required = true;
     let editing = false, original;
+    export let id;
 
     const dispatch = createEventDispatcher();
 
@@ -38,15 +39,18 @@
     }
 </script>
 
+
+
 {#if editing}
     <form on:submit|preventDefault={submit} on:keydown={keydown}>
-        <input type="text" bind:value on:blur={submit} {required} use:focus/>
+        <input {id} type="text" maxLength=16 bind:value on:blur={submit} {required} use:focus/>
     </form>
 {:else}
-    <div on:click={edit}>
+    <div {id} on:click={edit}>
         {value}
     </div>
 {/if}
+
 
 
 <style>
